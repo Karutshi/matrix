@@ -2,7 +2,6 @@
 #define RAINDROP_H
 #include <ncurses.h>
 #include <string>
-#include <vector>
 
 using namespace std;
 
