@@ -5,31 +5,31 @@
 
 using namespace std;
 
-#define Raindrops 400
+#define Default 400
 
 
 int main(int argc, char* argv[]){
     setlocale(LC_ALL, "");
-    int highlight = 1;
-    int choice = 0;
-    int c, return_code;
+    int n = Default;
+    if (argc > 1)
+        n = stoi(argv[1]);
     initscr();
 	start_color();
     clear();
     curs_set(0);
 	init_pair(1, COLOR_BLACK, COLOR_WHITE);
-    RainDrop v[Raindrops];
-    for (int i = 0; i < Raindrops; i++){
-        RainDrop v[i];
+    vector<RainDrop*> v;
+    for (int i = 0; i < n; i++){
+        v.push_back(new RainDrop());
     }
     while(1){
         erase();
-        for (int i = 0; i < Raindrops; i++){
-            v[i].update();
+        for (int i = 0; i < n; i++){
+            v[i] -> update();
         }
         refresh();
         usleep(100000);
     }
     endwin();
-    return return_code;
+    return 0;
 }
